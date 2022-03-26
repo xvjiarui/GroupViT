@@ -2,7 +2,7 @@
 import os
 import sys
 os.system("git clone https://github.com/NVlabs/GroupViT")
-sys.path.append('./GroupViT')
+os.chdir('GroupViT')
 
 import os.path as osp
 from collections import namedtuple
