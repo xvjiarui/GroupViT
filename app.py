@@ -144,7 +144,7 @@ GroupViT: Semantic Segmentation Emerges from Text Supervision
 gr.Interface(
     inference,
     inputs=[
-        gr.inputs.Dropdown(dataset_options, type='value', label='Dataset'),
+        gr.inputs.Dropdown(dataset_options, type='value', label='Category list'),
         gr.inputs.Textbox(
             lines=1, placeholder=None, default='', label='More classes'),
         gr.inputs.Image(type='filepath')
@@ -154,4 +154,4 @@ gr.Interface(
     description=description,
     article=article,
     examples=examples).launch(
-        enable_queue=True, share=True)
+        enable_queue=True)
