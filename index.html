@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="GroupViT: Semantic Segmentation Emerges from Text Supervision.">
+  <meta name="keywords" content="Vision Transformer, Text Supervision">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GroupViT: Semantic Segmentation Emerges from Text Supervision</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">GroupViT: Semantic Segmentation Emerges from Text Supervision</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://jerryxu.net">Jiarui Xu</a><sup>1*</sup>,</span>
+            <span class="author-block">
+              <a href="https://research.nvidia.com/person/shalini-gupta">Shalini De Mello</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://research.nvidia.com/person/sifei-liu">Sifei Liu</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://wonmin-byeon.github.io/">Wonmin Byeon</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="http://www.tmbdev.net/">Thomas Breuel</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://research.nvidia.com/person/jan-kautz">Jan Kautz</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://xiaolonw.github.io/">Xiaolong Wang</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of California San Diego,</span>
+            <span class="author-block"><sup>2</sup>NVIDIA</span>
+          </div>
+          <div class="is-size-6 publication-authors">
+            <!-- <span class="author-block">(* Jiarui Xu was an intern at NVIDIA during the project)</span> -->
+            <span class="author-block">(* the work was done at an internship at NVIDIA)</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2202.11094.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2202.11094"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://youtu.be/DtJsWIUTW-Y"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="groupvit_slide.key"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-slideshare"></i>
+                  </span>
+                  <span>Slide</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/NVlabs/GroupViT"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Official Code</span>
+                  </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/xvjiarui/GroupViT"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Personal Code with Models</span>
+                  </a>
+              </span>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video autoplay muted loop playsinline height="100%">
+        <source src="figs/website_teaser.m4v" type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span style="color: orange; font-weight:bold">Without using any mask annotations</span>, GroupVit groups the image into segments and outputs a semantic segmentation map.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+          <p>
+             Grouping and recognition are important components of visual scene understanding, e.g., for object detection and semantic segmentation. 
+             With end-to-end deep learning systems, grouping of image regions usually happens implicitly via top-down supervision from pixel-level recognition labels.  
+             Instead, in this paper, we propose to bring back the grouping mechanism into deep networks, which allows semantic segments to emerge automatically with only text supervision. 
+             We propose a hierarchical Grouping Vision Transformer (GroupViT), which goes beyond the regular grid structure representation and learns to group image regions into progressively larger arbitrary-shaped segments. 
+             We train GroupViT jointly with a text encoder on a large-scale image-text dataset via contrastive losses. 
+             <span style="font-weight:bold">With only text supervision and without any pixel-level annotations</span>, GroupViT learns to group together semantic regions and successfully transfers to the task of semantic segmentation in a zero-shot manner, i.e., without any further fine-tuning.  
+             It achieves a zero-shot accuracy of 51.2% mIoU on the PASCAL VOC 2012 and 22.3% mIoU on PASCAL Context datasets, and performs competitively to state-of-the-art transfer-learning methods requiring greater levels of supervision.
+          </p>
+          </div>
+        </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <!-- <div class="column is-four-fifths"> -->
+      <div class="column is-full-width">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/DtJsWIUTW-Y"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-widescreen">
+    <h2 class="title is-3">Problem Overview</h2>
+    <div class="columns">
+      <div class="column">
+        <p>First, we jointly train GroupViT and a text encoder using paired image-text data. 
+          With GroupViT, meaningful semantic grouping automatically emerges without any mask annotations. 
+          Then, we transfer the trained GroupViT model to the task of zero-shot semantic segmentation.</p>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-three-fifths">
+        <!-- <video autoplay muted loop width="100%">
+          <source src="figs/groupvit_overview.mp4" type="video/mp4">
+        </video> -->
+        <img src="figs/teaser.jpg" alt="">
+      </div>
+    </div>
+    
+    <h2 class="title is-3">GroupViT Architecture</h3>
+    <p> GroupViT contains a hierarchy of Transformer layers grouped into stages, each operating on progressively larger visual segments.
+        The images on the right show visual segments that emerge during different grouping stages.
+        The lower stage groups pixels into object parts, e.g., noses and legs of elephants; and the higher stage further merges them into entire objects, e.g., the whole elephant and the background forest.
+        Each grouping stage ends with a grouping block that computes the similarity between the learned group tokens and segment (image) tokens. 
+        The segment tokens assigned to the same group are merged together and represent new segment tokens that are input to the next grouping stage.</p>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-fullwidth">
+        <video autoplay muted loop playsinline controls>
+          <source src="figs/website_arch.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container is-max-widescreen">
+    <h2 class="title is-3">Concepts Learnt by Group Tokens</h2>
+      <div class="columns">
+        <div class="column">
+          <p>
+            We select some group tokens and highlight the attention regions across images in the PASCAL VOC 2012 dataset.
+            Even there is <span style="font-weight:bold">no classification</span> yet, different group tokens are learning different semantic concepts.
+          </p>
+        </div>
+      </div>
+      <video autoplay muted loop playsinline width="100%" controls>
+        <source src="figs/website_concepts.m4v" type="video/mp4">
+      </video>
+  </div>
+</section>
+
+<section class="hero is-small">
+  <div class="hero-body">
+  <div class="container is-max-widescreen">
+    <h2 class="title is-3">Results</h2>
+    <div class="columns">
+      <div class="column">
+        <p>We evaluate GroupViT on Pascal VOC, Pascal Context, and COCO datasets. GroupViT is not trained on any semantic segmentation annotation, and yet could zero-shot transfer to semantic segmentation classes of any dataset without fine-tuning. </p>
+      </div>
+    </div>
+
+    <h3 class="title is-4">Pascal VOC (zero-shot transfer without fine-tuning)</h3>
+      <video autoplay muted loop playsinline width="100%">
+        <source src="figs/website_voc_results.m4v" type="video/mp4">
+      </video>
+    <details>
+      <summary class="title is-6 button">Click here for more results on Pascal VOC</summary>
+      <video autoplay muted loop playsinline width="100%">
+        <source src="figs/website_voc_results_more.m4v" type="video/mp4">
+      </video>
+    </details>
+
+    <h3 class="title is-4">Pascal Context (zero-shot transfer without fine-tuning) </h3>
+      <video autoplay muted loop playsinline width="100%">
+        <source src="figs/website_ctx_results.m4v" type="video/mp4">
+      </video>
+    <details>
+      <summary class="title is-6 button">Click here for more results on Pascal Context</summary>
+      <video autoplay muted loop playsinline width="100%">
+        <source src="figs/website_ctx_results_more.m4v" type="video/mp4">
+      </video>
+    </details>
+
+    <h3 class="title is-4">COCO (zero-shot transfer without fine-tuning)</h3>
+      <video autoplay muted loop playsinline width="100%">
+        <source src="figs/website_coco_results.m4v" type="video/mp4">
+      </video>
+    <details>
+      <summary class="title is-6 button">Click here for more results on COCO</summary>
+      <video autoplay muted loop playsinline width="100%">
+        <source src="figs/website_coco_results_more.m4v" type="video/mp4">
+      </video>
+    </details>
+  </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{xu2022groupvit,
+  author    = {Xu, Jiarui and De Mello, Shalini and Liu, Sifei and Byeon, Wonmin and Breuel, Thomas and Kautz, Jan and Wang, Xiaolong},
+  title     = {GroupViT: Semantic Segmentation Emerges from Text Supervision},
+  journal   = {arXiv preprint arXiv:2202.11094},
+  year      = {2022},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/xvjiarui" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="content">
+        <p>
+          The template is borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
