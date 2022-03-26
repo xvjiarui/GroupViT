@@ -1,0 +1,12 @@
+diffdist==0.1
+einops
+ftfy==6.0.3
+mmcv==1.3.14
+git+https://github.com/xvjiarui/mmsegmentation.git@cpu_only#egg=mmsegmentation
+nltk==3.6.2
+omegaconf==2.1.1
+termcolor==1.1.0
+timm==0.3.2
+torch==1.8.0
+torchvision==0.9.0
+webdataset==0.1.103

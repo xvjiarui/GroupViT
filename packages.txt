@@ -1,0 +1,3 @@
+libsm6
+libxext6
+python3-opencv
