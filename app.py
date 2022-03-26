@@ -64,7 +64,7 @@ def inference(dataset, additional_classes, input_img):
         seg_cfg = 'segmentation/configs/_base_/datasets/pascal_voc12.py'
     elif dataset == 'coco' or dataset == 'COCO':
         dataset_class = COCOObjectDataset
-        seg_cfg = 'segmentation/configs/_base_/datasets/coco_object164k.py'
+        seg_cfg = 'segmentation/configs/_base_/datasets/coco.py'
     elif dataset == 'context' or dataset == 'Pascal Context':
         dataset_class = PascalContextDataset
         seg_cfg = 'segmentation/configs/_base_/datasets/pascal_context.py'
@@ -153,4 +153,4 @@ gr.Interface(
     title=title,
     description=description,
     article=article,
-    examples=examples).launch()
+    examples=examples).launch(enable_queue=True)
