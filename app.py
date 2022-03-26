@@ -2,7 +2,7 @@
 import os
 import sys
 os.system("git clone https://github.com/NVlabs/GroupViT")
-os.chdir('GroupViT')
+sys.path.insert(0, 'GroupViT')
 
 import os.path as osp
 from collections import namedtuple
@@ -23,6 +23,7 @@ from segmentation.evaluation import (GROUP_PALETTE, build_seg_demo_pipeline,
                                      build_seg_inference)
 from utils import get_config, load_checkpoint
 
+os.chdir('GroupViT')
 checkpoint_url = 'https://github.com/xvjiarui/GroupViT-1/releases/download/v1.0.0/group_vit_gcc_yfcc_30e-74d335e6.pth'
 cfg_path = 'configs/group_vit_gcc_yfcc_30e.yml'
 output_dir = 'demo/output'
