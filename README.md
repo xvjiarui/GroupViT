@@ -79,7 +79,7 @@ pip install nltk ftfy regex tqdm
 * To run the demo from the command line:
 
 ```shell
-python demo/demo_seg.py --cfg configs/group_vit_gcc_yfcc_30e.yml --resume /path/to/checkpoint --vis input_pred_label final_group --input demo/examples/voc.jpg --output_dir demo/output
+python demo/demo_seg.py --cfg configs/group_vit_gcc_yfcc_30e.yml --resume https://github.com/xvjiarui/GroupViT-1/releases/download/v1.0.0/group_vit_gcc_yfcc_30e-74d335e6.pth --vis input_pred_label final_group --input demo/examples/voc.jpg --output_dir demo/output
 ```
   The output is saved in `demo/output/`.
 
@@ -91,6 +91,7 @@ python demo/demo_seg.py --cfg configs/group_vit_gcc_yfcc_30e.yml --resume /path/
     <th></th>
     <th>Zero-shot Classification</th>
     <th colspan="3">Zero-shot Segmentation</th>
+    <th></th>
   </tr>
 </thead>
 <tbody>
@@ -100,6 +101,7 @@ python demo/demo_seg.py --cfg configs/group_vit_gcc_yfcc_30e.yml --resume /path/
     <td>Pascal VOC</td>
     <td>Pascal Context</td>
     <td>COCO</td>
+    <td>download</td>
   </tr>
   <tr>
     <td>GCC + YFCC (<a href="configs/group_vit_gcc_yfcc_30e.yml">cfg</a>)</td>
@@ -107,6 +109,7 @@ python demo/demo_seg.py --cfg configs/group_vit_gcc_yfcc_30e.yml --resume /path/
     <td>52.3</td>
     <td>22.4</td>
     <td>24.3</td>
+    <td><a href="https://github.com/xvjiarui/GroupViT-1/releases/download/v1.0.0/group_vit_gcc_yfcc_30e-879422e0.pth">checkpoint</a></td>
   </tr>
   <tr>
     <td>GCC + RedCaps (<a href="configs/group_vit_gcc_redcap_30e.yml">cfg</a>)</td>
@@ -114,6 +117,7 @@ python demo/demo_seg.py --cfg configs/group_vit_gcc_yfcc_30e.yml --resume /path/
     <td>50.8</td>
     <td>23.7</td>
     <td>27.5</td>
+    <td><a href="https://github.com/xvjiarui/GroupViT-1/releases/download/v1.0.0/group_vit_gcc_redcap_30e-3dd09a76.pth">checkpoint</a></td>
   </tr>
 </tbody>
 </table>
