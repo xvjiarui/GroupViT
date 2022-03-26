@@ -72,6 +72,7 @@ def inference(dataset, additional_classes, input_img):
         raise ValueError('Unknown dataset: {}'.format(args.dataset))
     with read_write(cfg):
         cfg.evaluate.seg.cfg = seg_cfg
+        cfg.evaluate.seg.opts = ['test_cfg.mode=whole']
 
     dataset_cfg = mmcv.Config()
     dataset_cfg.CLASSES = list(dataset_class.CLASSES)
