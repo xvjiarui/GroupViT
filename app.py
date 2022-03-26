@@ -153,5 +153,4 @@ gr.Interface(
     title=title,
     description=description,
     article=article,
-    examples=examples).launch(
-        enable_queue=True)
+    examples=examples).launch()
