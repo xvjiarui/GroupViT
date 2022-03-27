@@ -74,7 +74,7 @@ pip install nltk ftfy regex tqdm
 
 * Integrated into [Huggingface Spaces 🤗](https://huggingface.co/spaces) using [Gradio](https://github.com/gradio-app/gradio). Try out the web demo: [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/xvjiarui/GroupViT)
 
-* Run the demo on Google Colab: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1pdJVfAZUchMiHCraA_qBwAs4xnt1ekIU)
+* Run the demo on Google Colab: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Mwtz6ojiThWWdRrpAZTLlLs6w3T9Fr6x)
 
 * To run the demo from the command line:
 
@@ -122,7 +122,7 @@ python demo/demo_seg.py --cfg configs/group_vit_gcc_yfcc_30e.yml --resume https:
 </tbody>
 </table>
 
-Pre-trained weights `group_vit_gcc_yfcc_30e-879422e0.pth` and `group_vit_gcc_redcap_30e-3dd09a76.pth` for these models are provided by Jiarui Xu [here](https://github.com/xvjiarui/GroupViT#benchmark). 
+Pre-trained weights `group_vit_gcc_yfcc_30e-879422e0.pth` and `group_vit_gcc_redcap_30e-3dd09a76.pth` for these models are provided by Jiarui Xu [here](https://github.com/xvjiarui/GroupViT#benchmark-results). 
 
 ## Data Preparation
 
@@ -271,11 +271,11 @@ Please follow the [webdataset ImageNet Example](https://github.com/tmbdev-archiv
 
 ### Pascal VOC
 
-Please follow the[MMSegmentation Pascal VOC Preparation](https://github.com/open-mmlab/mmsegmentation/blob/master/docs/en/dataset_prepare.md#pascal-voc) instructions to download and setup the Pascal VOC dataset.
+Please follow the [MMSegmentation Pascal VOC Preparation](https://github.com/open-mmlab/mmsegmentation/blob/master/docs/en/dataset_prepare.md#pascal-voc) instructions to download and setup the Pascal VOC dataset.
 
 ### Pascal Context
 
-Please refer to the[MMSegmentation Pascal Context Preparation](https://github.com/open-mmlab/mmsegmentation/blob/master/docs/en/dataset_prepare.md#pascal-context) instructions to download and setup the Pascal Context dataset.
+Please refer to the [MMSegmentation Pascal Context Preparation](https://github.com/open-mmlab/mmsegmentation/blob/master/docs/en/dataset_prepare.md#pascal-context) instructions to download and setup the Pascal Context dataset.
 
 ### COCO
 
@@ -294,26 +294,26 @@ python convert_dataset/convert_coco.py local_data/data/coco/ -o local_data/data/
 Train on a single node:
 
 ```shell
-(node0)$ ./tools/dist_train.sh /path/to/config $GPUS_PER_NODE
+(node0)$ ./tools/dist_launch.sh main_group_vit.py /path/to/config $GPUS_PER_NODE
 ```
 
 For example, to train on a node with 8 GPUs, run:
 ```shell
-(node0)$ ./tools/dist_train.sh configs/group_vit_gcc_yfcc_30e.yml 8
+(node0)$ ./tools/dist_launch.sh main_group_vit configs/group_vit_gcc_yfcc_30e.yml 8
 ```
 
 Train on multiple nodes:
 
 ```shell
-(node0)$ ./tools/dist_mn_train.sh /path/to/config $NUM_NODES $NODE_RANK $GPUS_PER_NODE $MASTER_ADDR
-(node1)$ ./tools/dist_mn_train.sh /path/to/config $NUM_NODES $NODE_RANK $GPUS_PER_NODE $MASTER_ADDR
+(node0)$ ./tools/dist_mn_launch.sh main_group_vit.py /path/to/config $NODE_RANK $NUM_NODES $GPUS_PER_NODE $MASTER_ADDR
+(node1)$ ./tools/dist_mn_launch.sh main_group_vit.py /path/to/config $NODE_RANK $NUM_NODES $GPUS_PER_NODE $MASTER_ADDR
 ```
 
 For example, to train on two nodes with 8 GPUs each, run:
 
 ```shell
-(node0)$ ./tools/dist_mn_train.sh configs/group_vit_gcc_yfcc_30e.yml 0 2 8 tcp://node0
-(node1)$ ./tools/dist_mn_train.sh configs/group_vit_gcc_yfcc_30e.yml 1 2 8 tcp://node0
+(node0)$ ./tools/dist_mn_launch.sh main_group_vit.py configs/group_vit_gcc_yfcc_30e.yml 0 2 8 tcp://node0
+(node1)$ ./tools/dist_mn_launch.sh main_group_vit.py configs/group_vit_gcc_yfcc_30e.yml 1 2 8 tcp://node0
 ```
 
 We used 16 NVIDIA V100 GPUs for pre-training (in 2 days) in our paper.
