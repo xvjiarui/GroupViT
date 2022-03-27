@@ -24,7 +24,7 @@ from segmentation.evaluation import (GROUP_PALETTE, build_seg_demo_pipeline,
 from utils import get_config, load_checkpoint
 
 os.chdir('GroupViT')
-# checkpoint_url = 'https://github.com/xvjiarui/GroupViT/releases/download/v1.0.0/group_vit_gcc_yfcc_30e-74d335e6.pth'
+# checkpoint_url = 'https://github.com/xvjiarui/GroupViT-1/releases/download/v1.0.0/group_vit_gcc_yfcc_30e-74d335e6.pth'
 checkpoint_url = 'https://github.com/xvjiarui/GroupViT/releases/download/v1.0.0/group_vit_gcc_yfcc_30e-879422e0.pth'
 cfg_path = 'configs/group_vit_gcc_yfcc_30e.yml'
 output_dir = 'demo/output'
@@ -100,7 +100,7 @@ def inference(dataset, additional_classes, input_img):
     else:
         data['img_metas'] = [i.data[0] for i in data['img_metas']]
     with torch.no_grad():
-        result = seg_model(return_loss=False, rescale=True, **data)
+        result = seg_model(return_loss=False, rescale=False, **data)
 
     img_tensor = data['img'][0]
     img_metas = data['img_metas'][0]
@@ -112,8 +112,15 @@ def inference(dataset, additional_classes, input_img):
         h, w, _ = img_meta['img_shape']
         img_show = img[:h, :w, :]
 
-        ori_h, ori_w = img_meta['ori_shape'][:-1]
-        img_show = mmcv.imresize(img_show, (ori_w, ori_h))
+        # ori_h, ori_w = img_meta['ori_shape'][:-1]
+
+        # short_side = 448
+        # if ori_h > ori_w:
+        #     new_h, new_w = ori_h * short_side//ori_w , short_side
+        # else:
+        #     new_w, new_h = ori_w * short_side//ori_h , short_side
+
+        # img_show = mmcv.imresize(img_show, (new_w, new_h))
 
         for vis_mode in vis_modes:
             out_file = osp.join(output_dir, 'vis_imgs', vis_mode,
