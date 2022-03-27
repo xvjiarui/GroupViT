@@ -35,7 +35,7 @@ output_labels = ['segmentation map', 'groups']
 dataset_options = ['Pascal VOC', 'Pascal Context', 'COCO']
 examples = [['Pascal VOC', '', 'demo/examples/voc.jpg'],
             ['Pascal Context', '', 'demo/examples/ctx.jpg'],
-            ['COCO', 'rock', 'demo/examples/coco.jpg']]
+            ['COCO', '', 'demo/examples/coco.jpg']]
 
 PSEUDO_ARGS = namedtuple('PSEUDO_ARGS',
                          ['cfg', 'opts', 'resume', 'vis', 'local_rank'])
@@ -137,8 +137,7 @@ title = 'GroupViT'
 description = """
 Gradio Demo for GroupViT: Semantic Segmentation Emerges from Text Supervision. \n
 You may click on of the examples or upload your own image. \n
-GroupViT could perform open vocabulary segmentation, you may input more classes,
-e.g. "rock" is not in the COCO dataset, but you could input it for the giraffe image.
+GroupViT could perform open vocabulary segmentation, you may input more classes (seperate by comma).
 """
 
 article = """
