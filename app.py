@@ -23,6 +23,11 @@ from segmentation.evaluation import (GROUP_PALETTE, build_seg_demo_pipeline,
                                      build_seg_inference)
 from utils import get_config, load_checkpoint
 
+import shutil
+
+if not osp.exists('GroupViT/hg_demo'):
+    shutil.copytree('demo/', 'GroupViT/hg_demo/')
+
 os.chdir('GroupViT')
 # checkpoint_url = 'https://github.com/xvjiarui/GroupViT-1/releases/download/v1.0.0/group_vit_gcc_yfcc_30e-74d335e6.pth'
 checkpoint_url = 'https://github.com/xvjiarui/GroupViT/releases/download/v1.0.0/group_vit_gcc_yfcc_30e-879422e0.pth'
@@ -33,9 +38,9 @@ device = 'cpu'
 vis_modes = ['input_pred_label', 'final_group']
 output_labels = ['segmentation map', 'groups']
 dataset_options = ['Pascal VOC', 'Pascal Context', 'COCO']
-examples = [['Pascal VOC', '', 'demo/examples/voc.jpg'],
-            ['Pascal Context', '', 'demo/examples/ctx.jpg'],
-            ['COCO', '', 'demo/examples/coco.jpg']]
+examples = [['Pascal VOC', '', 'hg_demo/voc.jpg'],
+            ['Pascal Context', '', 'hg_demo/ctx.jpg'],
+            ['COCO', '', 'hg_demo/coco.jpg']]
 
 PSEUDO_ARGS = namedtuple('PSEUDO_ARGS',
                          ['cfg', 'opts', 'resume', 'vis', 'local_rank'])
